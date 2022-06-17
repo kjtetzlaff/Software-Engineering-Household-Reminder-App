@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".addtasks" >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="214dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="114dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="115dp"
+        android:text="Add Your Tasks +"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableRow
+        android:id="@+id/search_bar"
+        android:layout_width="347dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <Button
+            android:id="@+id/Search"
+            android:layout_width="99dp"
+            android:layout_height="match_parent"
+            android:text="Search"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/search_text"
+            android:layout_width="198dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:hint="@string/search_bar_text"
+            android:inputType="textPersonName"
+            android:textSize="12sp" />
+
+    </TableRow>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="377dp"
+        android:layout_height="472dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="17dp"
+        android:scrollbarStyle="insideOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_bar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/oil_change_task"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Schedule/change oil " />
+
+            <CheckBox
+                android:id="@+id/mow_lawn_task"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mow the lawn" />
+
+            <CheckBox
+                android:id="@+id/water_plants_task"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Water the plants" />
+
+            <CheckBox
+                android:id="@+id/smoke_detector_task"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Change batteries in smoke detector" />
+
+            <CheckBox
+                android:id="@+id/furnace_filter_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Change furnace filter" />
+
+            <CheckBox
+                android:id="@+id/water_filter_task"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Change water filter in fridge" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/add_custom_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="53dp"
+        android:layout_marginBottom="36dp"
+        android:text="Custom Task"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/add_tasks_done"
+        app:layout_constraintHorizontal_bias="0.229"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.565" />
+
+    <Button
+        android:id="@+id/add_tasks_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="53dp"
+        android:text="Done"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/add_custom_task"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

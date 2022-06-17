@@ -5,6 +5,12 @@
       <map>
         <entry key="..\:/Users/kjtet/Desktop/SoftwareEngineering/Qreminder/app/src/main/res/layout/fragment_first.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/kjtet/Desktop/SoftwareEngineering/Qreminder/app/src/main/res/layout/fragment_second.xml" value="0.22826086956521738" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/constraint_layout.xml" value="0.29698092695595557" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_add_tasks.xml" value="0.4379385685575181" />
+        <entry key="app/src/main/res/layout/fragment_first.xml" value="0.2230484008789062" />
+        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.19610507246376813" />
       </map>
     </option>
   </component>

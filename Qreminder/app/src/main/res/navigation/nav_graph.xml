@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_Addtasks"
+            app:destination="@id/Addtasks" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -24,5 +27,17 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/Addtasks"
+        android:name="com.example.qreminder.addtasks"
+        android:label="@string/addtasks_label"
+        toolsLlayout="@layout/fragment_addtasks">
+
+        <action
+            android:id="@+id/action_Addtasks_to_FirstFragmenet"
+            app:destination="@id/FirstFragment" />
+
     </fragment>
 </navigation>
