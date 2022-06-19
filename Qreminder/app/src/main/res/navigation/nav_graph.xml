@@ -36,8 +36,12 @@
         toolsLlayout="@layout/fragment_addtasks">
 
         <action
-            android:id="@+id/action_Addtasks_to_FirstFragmenet"
+            android:id="@+id/action_Addtasks_to_CustomTask"
             app:destination="@id/FirstFragment" />
+
+        <action
+            android:id="@+id/action_Addtasks_to_MyTasks"
+            app:destination="@id/SecondFragment" />
 
     </fragment>
 </navigation>

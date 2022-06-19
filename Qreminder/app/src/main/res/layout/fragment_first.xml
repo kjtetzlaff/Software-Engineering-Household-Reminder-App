@@ -7,62 +7,110 @@
     tools:context=".FirstFragment">
 
     <Button
-        android:id="@+id/test_to_addtasks"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="99dp"
-        android:layout_marginEnd="112dp"
-        android:layout_marginBottom="273dp"
-        android:text="to add tasks"
-        app:layout_constraintBottom_toTopOf="@+id/createTaskDoneButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateInput"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
         android:id="@+id/createTaskDoneButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="28dp"
         android:text="@string/createTaskDoneText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/taskNameInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Task Name"
-        app:layout_constraintEnd_toEndOf="parent"
+    <TextView
+        android:id="@+id/info1"
+        android:layout_width="150dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="36dp"
+        android:text="Task Name: "
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/info2"
+        app:layout_constraintEnd_toStartOf="@+id/task_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/frequencyInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
+    <TextView
+        android:id="@+id/info2"
+        android:layout_width="152dp"
+        android:layout_height="122dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="17dp"
+        android:text="How often would you like to be reminded?"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/reminder_dropdown"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskNameInput" />
+        app:layout_constraintTop_toBottomOf="@+id/info1" />
+
+    <Spinner
+        android:id="@+id/reminder_dropdown"
+        android:layout_width="222dp"
+        android:layout_height="122dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="33dp"
+        android:entries="@array/reminder_duration"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toEndOf="@+id/info2"
+        app:layout_constraintTop_toBottomOf="@+id/task_name" />
 
     <EditText
-        android:id="@+id/dateInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:id="@+id/task_name"
+        android:layout_width="222dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="36dp"
         android:ems="10"
-        android:inputType="date"
+        android:hint="@string/enter_task"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/reminder_dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/info1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/info3"
+        android:layout_width="156dp"
+        android:layout_height="92dp"
+        android:layout_marginTop="24dp"
+        android:text="When did you last complete the task?"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/date_picker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frequencyInput" />
+        app:layout_constraintTop_toBottomOf="@+id/info2" />
+
+    <Button
+        android:id="@+id/date_picker"
+        style="@style/Widget.AppCompat.Spinner"
+        android:layout_width="301dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="71dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginBottom="84dp"
+        android:onClick="openDatePicker"
+        android:text="Jan 1 2022"
+        android:textAlignment="center"
+        android:textColor="#050000"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/createTaskDoneButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info3" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -77,7 +77,16 @@ public class addtasks extends Fragment {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(addtasks.this)
-                        .navigate(R.id.action_Addtasks_to_FirstFragmenet);
+                        .navigate(R.id.action_Addtasks_to_CustomTask);
+            }
+
+        });
+
+        binding.addTasksDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(addtasks.this)
+                        .navigate(R.id.action_Addtasks_to_MyTasks);
             }
 
         });
