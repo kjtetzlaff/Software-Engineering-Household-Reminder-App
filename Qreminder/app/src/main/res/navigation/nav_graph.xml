@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
+
     app:startDestination="@id/FirstFragment">
+    <!--The line above can be changed to adjust which screen the app starts on.-->
 
     <fragment
         android:id="@+id/FirstFragment"
@@ -13,19 +15,21 @@
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/myTasks" />
         <action
             android:id="@+id/action_FirstFragment_to_Addtasks"
             app:destination="@id/Addtasks" />
+
+
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.qreminder.SecondFragment"
+        android:id="@+id/myTasks"
+        android:name="com.example.qreminder.myTasks"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_mytasks">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_myTasks_to_FirstFragment"
             app:destination="@id/FirstFragment" />
 
     </fragment>
@@ -36,12 +40,27 @@
         toolsLlayout="@layout/fragment_addtasks">
 
         <action
-            android:id="@+id/action_Addtasks_to_CustomTask"
+            android:id="@+id/action_Addtasks_to_Firstfragment"
             app:destination="@id/FirstFragment" />
 
         <action
             android:id="@+id/action_Addtasks_to_MyTasks"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/myTasks" />
+
+        <action
+            android:id="@+id/action_addTasks_to_customTask"
+            app:destination="@id/CustomTask"/>
 
     </fragment>
+
+    <fragment
+        android:id="@+id/CustomTask"
+        android:name="com.example.qreminder.customTask"
+        android:label="@string/custom_task_label"
+        toolsLayout="@Layout/fragment_custom_task"/>
+
+    <action
+        android:id="@+id/action_customTask_to_addTask"
+        app:destination="@id/Addtasks"/>
+
 </navigation>

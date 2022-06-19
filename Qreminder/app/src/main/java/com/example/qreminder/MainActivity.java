@@ -26,8 +26,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DatePickerDialog datePickerDialog;
-    private Button dateButton;
+
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
@@ -54,41 +53,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        initDatePicker();
-        dateButton=findViewById(R.id.date_picker);
-        dateButton.setText(getToday());
-
     }
 
-    private String getToday(){
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH) +1;
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        String a = month+"/"+day+"/"+year;
-        return a;
-    }
-    private void initDatePicker() {
-        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month+1;
-                String date = month+"/"+dayOfMonth+"/"+year;
-                dateButton.setText(date);
 
-            }
-        };
-
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-
-        int style = AlertDialog.THEME_HOLO_LIGHT;
-
-        datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -119,8 +86,5 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    public void openDatePicker(View view){
-        datePickerDialog.show();
 
-    }
 }

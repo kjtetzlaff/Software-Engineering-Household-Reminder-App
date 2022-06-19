@@ -77,7 +77,7 @@ public class addtasks extends Fragment {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(addtasks.this)
-                        .navigate(R.id.action_Addtasks_to_CustomTask);
+                        .navigate(R.id.action_addTasks_to_customTask);
             }
 
         });

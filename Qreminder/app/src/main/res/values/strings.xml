@@ -2,12 +2,14 @@
     <string name="app_name">Qreminder</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="addtasks_label">Addtasks</string>
+    <string name="first_fragment_label">Start Page</string>
+    <string name="second_fragment_label">My Tasks</string>
+    <string name="addtasks_label">Add Tasks</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="enter_task">Enter Task</string>
+    <string name="start">Start</string>
+    <string name="custom_task_label">Add Custom task</string>
 
     <string-array name="reminder_duration">
         <item>Everyday</item>
@@ -19,7 +21,6 @@
         <item>Every 45 days</item>
         <item>Every 60 days</item>
         <item>Every 365 days</item>
-
     </string-array>
 
     <string name="hello_first_fragment">Hello first fragment</string>
