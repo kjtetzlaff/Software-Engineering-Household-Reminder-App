@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.qreminder.databinding.FragmentMytasksBinding;
+import com.google.android.material.tabs.TabLayout;
 
 public class myTasks extends Fragment {
 
@@ -28,12 +29,11 @@ public class myTasks extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
+        binding.editTasksTab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(myTasks.this)
-                        .navigate(R.id.action_myTasks_to_FirstFragment);
+                        .navigate(R.id.action_myTasks_to_editTasks);
             }
         });
     }

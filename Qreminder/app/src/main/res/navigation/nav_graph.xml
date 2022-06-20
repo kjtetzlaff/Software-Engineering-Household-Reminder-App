@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
 
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/EditTasks">
     <!--The line above can be changed to adjust which screen the app starts on.-->
 
     <fragment
@@ -14,11 +14,11 @@
         tools:layout="@layout/fragment_first">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/action_FirstFragment_to_myTasks"
             app:destination="@id/myTasks" />
         <action
             android:id="@+id/action_FirstFragment_to_Addtasks"
-            app:destination="@id/Addtasks" />
+            app:destination="@id/AddTasks" />
 
 
     </fragment>
@@ -32,9 +32,13 @@
             android:id="@+id/action_myTasks_to_FirstFragment"
             app:destination="@id/FirstFragment" />
 
+        <action
+            android:id="@+id/action_myTasks_to_editTasks"
+            app:destination="@id/EditTasks" />
+
     </fragment>
     <fragment
-        android:id="@+id/Addtasks"
+        android:id="@+id/AddTasks"
         android:name="com.example.qreminder.addtasks"
         android:label="@string/addtasks_label"
         toolsLlayout="@layout/fragment_addtasks">
@@ -54,6 +58,26 @@
     </fragment>
 
     <fragment
+        android:id="@+id/EditTasks"
+        android:name="com.example.qreminder.EditTasksFragment"
+        android:label="Edit Tasks"
+        toolsLlayout="@layout/fragment_edittasks">
+
+        <action
+            android:id="@+id/action_EditTasks_to_AddTasks"
+            app:destination="@id/AddTasks" />
+
+        <action
+            android:id="@+id/action_EditTasks_to_MyTasks"
+            app:destination="@id/myTasks" />
+
+        <action
+            android:id="@+id/action_EditTasks_to_CustomTask"
+            app:destination="@id/CustomTask" />
+
+    </fragment>
+
+    <fragment
         android:id="@+id/CustomTask"
         android:name="com.example.qreminder.customTask"
         android:label="@string/custom_task_label"
@@ -61,6 +85,10 @@
 
     <action
         android:id="@+id/action_customTask_to_addTask"
-        app:destination="@id/Addtasks"/>
+        app:destination="@id/AddTasks"/>
+
+    <action
+        android:id="@+id/action_customTask_to_editTasks"
+        app:destination="@id/EditTasks"/>
 
 </navigation>
