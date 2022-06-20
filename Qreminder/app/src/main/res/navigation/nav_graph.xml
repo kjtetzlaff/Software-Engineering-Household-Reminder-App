@@ -10,33 +10,37 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.qreminder.FirstFragment"
-        android:label="@string/first_fragment_label"
+        android:label="QReminder"
         tools:layout="@layout/fragment_first">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/action_FirstFragment_to_myTasks"
             app:destination="@id/myTasks" />
         <action
             android:id="@+id/action_FirstFragment_to_Addtasks"
-            app:destination="@id/Addtasks" />
+            app:destination="@id/AddTasks" />
 
 
     </fragment>
     <fragment
         android:id="@+id/myTasks"
         android:name="com.example.qreminder.myTasks"
-        android:label="@string/second_fragment_label"
+        android:label="QReminder"
         tools:layout="@layout/fragment_mytasks">
 
         <action
             android:id="@+id/action_myTasks_to_FirstFragment"
             app:destination="@id/FirstFragment" />
 
+        <action
+            android:id="@+id/action_myTasks_to_editTasks"
+            app:destination="@id/EditTasks" />
+
     </fragment>
     <fragment
-        android:id="@+id/Addtasks"
+        android:id="@+id/AddTasks"
         android:name="com.example.qreminder.addtasks"
-        android:label="@string/addtasks_label"
+        android:label="Add Tasks"
         toolsLlayout="@layout/fragment_addtasks">
 
         <action
@@ -54,13 +58,37 @@
     </fragment>
 
     <fragment
+        android:id="@+id/EditTasks"
+        android:name="com.example.qreminder.EditTasksFragment"
+        android:label="QReminder"
+        toolsLlayout="@layout/fragment_edittasks">
+
+        <action
+            android:id="@+id/action_EditTasks_to_AddTasks"
+            app:destination="@id/AddTasks" />
+
+        <action
+            android:id="@+id/action_EditTasks_to_MyTasks"
+            app:destination="@id/myTasks" />
+
+        <action
+            android:id="@+id/action_EditTasks_to_CustomTask"
+            app:destination="@id/CustomTask" />
+
+    </fragment>
+
+    <fragment
         android:id="@+id/CustomTask"
         android:name="com.example.qreminder.customTask"
-        android:label="@string/custom_task_label"
+        android:label="QReminder"
         toolsLayout="@Layout/fragment_custom_task"/>
 
     <action
         android:id="@+id/action_customTask_to_addTask"
-        app:destination="@id/Addtasks"/>
+        app:destination="@id/AddTasks"/>
+
+    <action
+        android:id="@+id/action_customTask_to_editTasks"
+        app:destination="@id/EditTasks"/>
 
 </navigation>

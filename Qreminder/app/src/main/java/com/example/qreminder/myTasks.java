@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.qreminder.databinding.FragmentMytasksBinding;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 
 public class myTasks extends Fragment {
 
@@ -21,7 +23,32 @@ public class myTasks extends Fragment {
             Bundle savedInstanceState
     ) {
 
+
         binding = FragmentMytasksBinding.inflate(inflater, container, false);
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("My Tasks"));
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Edit Tasks"));
+
+        binding.tabLayout.getTabAt(0).select();
+        binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if(tab.getPosition() == 1) {
+                    NavHostFragment.findNavController(myTasks.this)
+                        .navigate(R.id.action_myTasks_to_editTasks);
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
         return binding.getRoot();
 
     }
@@ -29,13 +56,8 @@ public class myTasks extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(myTasks.this)
-                        .navigate(R.id.action_myTasks_to_FirstFragment);
-            }
-        });
+
+
     }
 
     @Override
