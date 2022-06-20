@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User-School and Work/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/User-School and Work/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/content_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/User-School and Work/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/fragment_addtasks.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/User-School and Work/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/fragment_custom_task.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/User-School and Work/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/fragment_edit_tasks.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/User-School and Work/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/fragment_first.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/User-School and Work/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/fragment_mytasks.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/kjtet/Desktop/SoftwareEngineering/Qreminder/app/src/main/res/layout/fragment_first.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/kjtet/Desktop/SoftwareEngineering/Qreminder/app/src/main/res/layout/fragment_second.xml" value="0.22826086956521738" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
