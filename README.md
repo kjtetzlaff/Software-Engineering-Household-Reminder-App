@@ -7,7 +7,7 @@ We wanted to create a simple yet effective way to make sure that these important
 This android app has five main fragments:
 1. A start screen with our logo and a button to start
 2. A screen allowing you to select common tasks and automatically add reminders for them
-3. A screen showing all your tasks - both ovredue tasks to work on and upcoming tasks
+3. A screen showing all your tasks - both overdue tasks to work on and upcoming tasks
 4. A screen allowing you to edit which tasks you would like reminders for
 5. A screen allowing you to add your own custom tasks for anything that isn't on your list.
 
