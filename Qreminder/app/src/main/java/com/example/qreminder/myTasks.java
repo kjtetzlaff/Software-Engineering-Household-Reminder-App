@@ -58,7 +58,7 @@ public class myTasks extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        tvm = new ViewModelProvider(this).get(TaskViewModel.class);
+        tvm = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
         tvm.getAllTasks().observe(getViewLifecycleOwner(), tasks -> {
             // Update the cached copy of the words in the adapter.
             adapter.submitList(tasks);

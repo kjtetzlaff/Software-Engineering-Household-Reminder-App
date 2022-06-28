@@ -27,11 +27,12 @@ import java.util.Date;
 
 public class customTask extends Fragment {
 
-    TaskViewModel tvm = new ViewModelProvider(this).get(TaskViewModel.class);
+
 
     private FragmentCustomTaskBinding binding;
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
+    private TaskViewModel tvm;
 
     public customTask() {
         // Required empty public constructor
@@ -55,6 +56,8 @@ public class customTask extends Fragment {
         initDatePicker();
         dateButton=view.findViewById(R.id.date_Select);
         dateButton.setText(getToday());
+        tvm = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
+
         binding.createTaskDoneButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
