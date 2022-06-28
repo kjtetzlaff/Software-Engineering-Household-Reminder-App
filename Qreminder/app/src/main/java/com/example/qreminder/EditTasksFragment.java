@@ -36,7 +36,7 @@ public class EditTasksFragment extends Fragment {
             public void onTabSelected(TabLayout.Tab tab) {
                 if(tab.getPosition() == 0) {
                     NavHostFragment.findNavController(EditTasksFragment.this)
-                            .navigate(R.id.action_myTasks_to_editTasks);
+                            .navigate(R.id.action_EditTasks_to_MyTasks);
                 }
             }
 
