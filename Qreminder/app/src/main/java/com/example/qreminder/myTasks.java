@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.qreminder.databinding.FragmentMytasksBinding;
 import com.google.android.material.tabs.TabItem;
@@ -17,6 +19,7 @@ import com.google.android.material.tabs.TabLayout;
 public class myTasks extends Fragment {
 
     private FragmentMytasksBinding binding;
+    private TaskViewModel tvm;
 
     @Override
     public View onCreateView(
@@ -48,6 +51,17 @@ public class myTasks extends Fragment {
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
+        });
+
+        RecyclerView recyclerView = binding.overdueRecycler;
+        final TaskListAdapter adapter = new TaskListAdapter(new TaskListAdapter.TaskDiff());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        tvm = new ViewModelProvider(this).get(TaskViewModel.class);
+        tvm.getAllTasks().observe(getViewLifecycleOwner(), tasks -> {
+            // Update the cached copy of the words in the adapter.
+            adapter.submitList(tasks);
         });
 
         return binding.getRoot();
