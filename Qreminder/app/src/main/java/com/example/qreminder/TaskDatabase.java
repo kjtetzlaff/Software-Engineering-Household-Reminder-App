@@ -38,7 +38,7 @@ public abstract class TaskDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            
+
         }
     };
 

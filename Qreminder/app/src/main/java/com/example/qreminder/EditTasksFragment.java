@@ -4,7 +4,10 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +17,15 @@ import com.example.qreminder.databinding.FragmentEdittasksBinding;
 import com.example.qreminder.databinding.FragmentMytasksBinding;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
 
 public class EditTasksFragment extends Fragment {
 
     private FragmentEdittasksBinding binding;
+    private TaskViewModel tvm;
 
     @Override
     public View onCreateView(
@@ -54,19 +62,23 @@ public class EditTasksFragment extends Fragment {
             }
         });
 
+        RecyclerView editRecyclerView = binding.editRecyclerView;
+        final TaskListAdapter adapter = new TaskListAdapter(new TaskListAdapter.TaskDiff(), 2);
+        editRecyclerView.setAdapter(adapter);
+        editRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        tvm = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
+        tvm.getAllTasks().observe(getViewLifecycleOwner(), tasks -> {
+            // Update the cached copy of the words in the adapter.
+            adapter.submitList(tasks);
+        });
+
         return binding.getRoot();
 
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        binding.myTasksTab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                NavHostFragment.findNavController(EditTasksFragment.this)
-//                        .navigate(R.id.action_EditTasks_to_MyTasks);
-//            }
-//        });
 
         binding.floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override

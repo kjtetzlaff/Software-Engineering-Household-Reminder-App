@@ -58,13 +58,13 @@ public class myTasks extends Fragment {
         });
 
         RecyclerView overdueRecyclerView = binding.overdueRecycler;
-        final TaskListAdapter overdueAdapter = new TaskListAdapter(new TaskListAdapter.TaskDiff());
+        final TaskListAdapter overdueAdapter = new TaskListAdapter(new TaskListAdapter.TaskDiff(), 1);
         overdueRecyclerView.setAdapter(overdueAdapter);
         overdueRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
         RecyclerView upcomingRecyclerView = binding.upcomingRecycler;
-        final TaskListAdapter upcomingAdapter = new TaskListAdapter(new TaskListAdapter.TaskDiff());
+        final TaskListAdapter upcomingAdapter = new TaskListAdapter(new TaskListAdapter.TaskDiff(), 1);
         upcomingRecyclerView.setAdapter(upcomingAdapter);
         upcomingRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 

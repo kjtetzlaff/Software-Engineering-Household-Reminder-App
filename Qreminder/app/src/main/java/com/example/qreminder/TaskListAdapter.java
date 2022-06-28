@@ -8,19 +8,21 @@ import androidx.recyclerview.widget.ListAdapter;
 
 public class TaskListAdapter extends ListAdapter<Task, TaskViewHolder> {
 
-    public TaskListAdapter(@NonNull DiffUtil.ItemCallback<Task> diffCallback) {
+    private int type;
+    public TaskListAdapter(@NonNull DiffUtil.ItemCallback<Task> diffCallback, int type) {
         super(diffCallback);
+        this.type = type;
     }
 
     @Override
     public TaskViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return TaskViewHolder.create(parent);
+        return TaskViewHolder.create(parent, type);
     }
 
     @Override
     public void onBindViewHolder(TaskViewHolder holder, int position) {
         Task current = getItem(position);
-        holder.bind(current.dateString(), current.getName());
+        holder.bind(current);
     }
 
     static class TaskDiff extends DiffUtil.ItemCallback<Task> {
