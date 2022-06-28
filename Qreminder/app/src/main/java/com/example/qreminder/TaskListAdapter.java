@@ -20,7 +20,7 @@ public class TaskListAdapter extends ListAdapter<Task, TaskViewHolder> {
     @Override
     public void onBindViewHolder(TaskViewHolder holder, int position) {
         Task current = getItem(position);
-        holder.bind(current.toString());
+        holder.bind(current.dateString(), current.getName());
     }
 
     static class TaskDiff extends DiffUtil.ItemCallback<Task> {

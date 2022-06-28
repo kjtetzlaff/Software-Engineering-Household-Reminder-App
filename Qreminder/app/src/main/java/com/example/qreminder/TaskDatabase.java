@@ -26,7 +26,7 @@ public abstract class TaskDatabase extends RoomDatabase {
             synchronized (TaskDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    TaskDatabase.class, "task_datebase")
+                                    TaskDatabase.class, "task_database")
                             .addCallback(sRoomDatabaseCallback).build();
                 }
             }
@@ -38,6 +38,7 @@ public abstract class TaskDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
+            
         }
     };
 

@@ -62,9 +62,21 @@ public class customTask extends Fragment {
 
             @Override
             public void onClick(View view) {
+                String frequency = binding.reminderDropdown.getSelectedItem().toString();
+                int numDays = 1;
+                if (frequency.contains("Every ") && frequency.contains(" days")) {
+                    try {
+                        int tempNumDays = Integer.parseInt(frequency.split(" ")[1]);
+                        if (tempNumDays >= 0) {
+                            numDays = tempNumDays;
+                        }
+                    } catch (Exception e) {
+
+                    }
+
+                }
                 Task newTask = new Task(binding.taskName.getText().toString(),
-                        new Date((String)binding.dateSelect.getText()),
-                        binding.reminderDropdown.getCount()
+                        new Date((String)binding.dateSelect.getText()), numDays
                       );
 
 

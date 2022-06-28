@@ -28,20 +28,20 @@ public class Task {
     @ColumnInfo(name = "frequency")
     private int frequency;
 
-    public Task(@NonNull String taskName, Date taskDateDue, int taskFrequency){
+    public Task(@NonNull String taskName, Date dateLastCompleted, int taskFrequency){
         name = taskName;
+        frequency = taskFrequency;
+        Date taskDateDue = dateDueFromDateComplete(dateLastCompleted);
         day = taskDateDue.getDate();
         month = taskDateDue.getMonth();
         year = taskDateDue.getYear();
-
-        frequency = taskFrequency;
     }
 
     public Task() {
         name = "-";
         day = 1;
         month = 1;
-        year = 2000;
+        year = 0;
         frequency = 1;
     }
 
@@ -95,6 +95,13 @@ public class Task {
         return frequency;
     }
 
+    public String dateString() {
+        if (year == Calendar.getInstance().getTime().getYear()){
+            return (month + 1) + "/" + day;
+        }
+        return (month + 1) + "/" + day + "/" + (year + 1900);
+    }
+
     public String toString() {
         return (getDateDue().toString() + "\n" + getName());
     }
@@ -102,7 +109,7 @@ public class Task {
     public Date dateDueFromDateComplete(Date lastCompleted) {
         Calendar c = Calendar.getInstance();
         c.setTime(lastCompleted);
-        c.add(Calendar.DATE, frequency);
-        return (Date) c.getTime();
+        c.add(Calendar.DAY_OF_MONTH, frequency);
+        return c.getTime();
     }
 }

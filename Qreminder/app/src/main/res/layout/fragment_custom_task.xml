@@ -30,7 +30,7 @@
         android:layout_marginStart="33dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="17dp"
-        android:text="How often would you like to be reminded?"
+        android:text="@string/reminder_frequency_description"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"

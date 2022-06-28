@@ -120,5 +120,6 @@
     </string>
     <string name="my_tasks_text">My Tasks</string>
     <string name="edit_tasks_text">Edit Tasks</string>
+    <string name="reminder_frequency_description">How often would you like to be reminded?</string>
 
 </resources>

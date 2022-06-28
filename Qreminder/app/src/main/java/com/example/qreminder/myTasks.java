@@ -16,6 +16,10 @@ import com.example.qreminder.databinding.FragmentMytasksBinding;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
 public class myTasks extends Fragment {
 
     private FragmentMytasksBinding binding;
@@ -53,15 +57,34 @@ public class myTasks extends Fragment {
             }
         });
 
-        RecyclerView recyclerView = binding.overdueRecycler;
-        final TaskListAdapter adapter = new TaskListAdapter(new TaskListAdapter.TaskDiff());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        RecyclerView overdueRecyclerView = binding.overdueRecycler;
+        final TaskListAdapter overdueAdapter = new TaskListAdapter(new TaskListAdapter.TaskDiff());
+        overdueRecyclerView.setAdapter(overdueAdapter);
+        overdueRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+        RecyclerView upcomingRecyclerView = binding.upcomingRecycler;
+        final TaskListAdapter upcomingAdapter = new TaskListAdapter(new TaskListAdapter.TaskDiff());
+        upcomingRecyclerView.setAdapter(upcomingAdapter);
+        upcomingRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         tvm = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
         tvm.getAllTasks().observe(getViewLifecycleOwner(), tasks -> {
             // Update the cached copy of the words in the adapter.
-            adapter.submitList(tasks);
+            List<Task> upcoming = new ArrayList<Task>();
+            List<Task> overdue = new ArrayList<Task>();
+
+
+            for (Task task:tasks) {
+                if (task.getDateDue().before(Calendar.getInstance().getTime())) {
+                    overdue.add(task);
+                } else {
+                    upcoming.add(task);
+                }
+            }
+
+            overdueAdapter.submitList(overdue);
+            upcomingAdapter.submitList(upcoming);
         });
 
         return binding.getRoot();
