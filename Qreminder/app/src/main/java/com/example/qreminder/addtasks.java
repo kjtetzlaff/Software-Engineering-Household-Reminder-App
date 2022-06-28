@@ -12,11 +12,6 @@ import android.view.ViewGroup;
 
 import com.example.qreminder.databinding.FragmentAddtasksBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link addtasks#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class addtasks extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
