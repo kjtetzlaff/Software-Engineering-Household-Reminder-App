@@ -39,6 +39,13 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
                     Navigation.findNavController(view).navigate(R.id.action_EditTasks_to_CustomTask);
                 }
             });
+            ImageButton delete = itemView.findViewById(R.id.delete_button);
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
         }
 
 

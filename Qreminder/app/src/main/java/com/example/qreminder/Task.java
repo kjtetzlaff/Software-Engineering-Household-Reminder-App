@@ -28,13 +28,17 @@ public class Task {
     @ColumnInfo(name = "frequency")
     private int frequency;
 
-    public Task(@NonNull String taskName, Date dateLastCompleted, int taskFrequency){
+    @ColumnInfo(name = "active")
+    private int active;
+
+    public Task(@NonNull String taskName, Date dateLastCompleted, int taskFrequency, int activeLevel){
         name = taskName;
         frequency = taskFrequency;
         Date taskDateDue = dateDueFromDateComplete(dateLastCompleted);
         day = taskDateDue.getDate();
         month = taskDateDue.getMonth();
         year = taskDateDue.getYear();
+        active = activeLevel;
     }
 
     public Task() {
@@ -43,7 +47,10 @@ public class Task {
         month = 1;
         year = 0;
         frequency = 1;
+        active = 0;
     }
+
+    public void setActive(int active){this.active = active;}
 
     public void setName(@NonNull String newName) {
         name = newName;
@@ -77,6 +84,10 @@ public class Task {
 
     public int getDay() {
         return day;
+    }
+
+    public int getActive() {
+        return active;
     }
 
     public int getMonth() {

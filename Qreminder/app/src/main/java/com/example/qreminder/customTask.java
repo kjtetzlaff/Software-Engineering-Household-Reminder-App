@@ -76,7 +76,7 @@ public class customTask extends Fragment {
 
                 }
                 Task newTask = new Task(binding.taskName.getText().toString(),
-                        new Date((String)binding.dateSelect.getText()), numDays
+                        new Date((String)binding.dateSelect.getText()), numDays, 2
                       );
 
 

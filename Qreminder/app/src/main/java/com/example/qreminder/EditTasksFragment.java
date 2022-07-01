@@ -88,37 +88,6 @@ public class EditTasksFragment extends Fragment {
             }
         });
 
-        binding.imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(EditTasksFragment.this)
-                        .navigate(R.id.action_EditTasks_to_CustomTask);
-            }
-        });
-
-        binding.imageButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(EditTasksFragment.this)
-                        .navigate(R.id.action_EditTasks_to_CustomTask);
-            }
-        });
-
-        binding.imageButton3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(EditTasksFragment.this)
-                        .navigate(R.id.action_EditTasks_to_CustomTask);
-            }
-        });
-
-        binding.imageButton4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(EditTasksFragment.this)
-                        .navigate(R.id.action_EditTasks_to_CustomTask);
-            }
-        });
     }
 
     @Override

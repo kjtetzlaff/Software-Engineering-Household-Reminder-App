@@ -28,7 +28,7 @@ public interface TaskDAO {
     @Query("SELECT * FROM task_table WHERE taskName = :name")
     Task getTaskByName(String name);
 
-    @Query("SELECT * FROM task_table ORDER BY year, month, day")
+    @Query("SELECT * FROM task_table WHERE active >= 1 ORDER BY year, month, day")
     LiveData<List<Task>> getTaskListByDate();
 
 }
