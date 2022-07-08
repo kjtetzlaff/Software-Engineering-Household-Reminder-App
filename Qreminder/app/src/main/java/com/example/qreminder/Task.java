@@ -123,4 +123,13 @@ public class Task {
         c.add(Calendar.DAY_OF_MONTH, frequency);
         return c.getTime();
     }
+
+    //Sets new date once updated
+    public void update(){
+        setDateDue(dateDueFromDateComplete(dateChecker.currentDate()));
+        //Only temporarily updates the data....
+
+
+
+    }
 }
