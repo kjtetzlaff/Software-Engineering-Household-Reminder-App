@@ -1,5 +1,7 @@
 package com.example.qreminder;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +26,7 @@ public class myTasks extends Fragment {
 
     private FragmentMytasksBinding binding;
     private TaskViewModel tvm;
+    private boolean con = false;
 
     @Override
     public View onCreateView(
@@ -74,6 +77,12 @@ public class myTasks extends Fragment {
             List<Task> upcoming = new ArrayList<Task>();
             List<Task> overdue = new ArrayList<Task>();
 
+            List<Task> notify = dateChecker.whatToNotify(tasks);
+
+            for (Task task: notify){
+                buildPopUp(task);
+
+            }
 
             for (Task task:tasks) {
                 if (task.getDateDue().before(Calendar.getInstance().getTime())) {
@@ -82,6 +91,7 @@ public class myTasks extends Fragment {
                     upcoming.add(task);
                 }
             }
+
 
             overdueAdapter.submitList(overdue);
             upcomingAdapter.submitList(upcoming);
@@ -102,6 +112,87 @@ public class myTasks extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    public void buildPopUp(Task task){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getView().getContext());
+
+        builder.setCancelable(false);
+        builder.setTitle("Due Task");
+        builder.setMessage("Your "+ task.getName()+ " is due today");
+        builder.setNegativeButton("Ignore", new DialogInterface.OnClickListener(){
+            @Override
+                    public void onClick(DialogInterface dialogInterface, int i){
+                dialogInterface.cancel();
+
+            }
+        });
+
+        builder.setPositiveButton("Completed", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+                //Action when task has been completed
+
+                task.update();
+
+                //Attempt at updating the database
+                //TaskDatabase db = TaskDatabase.getDatabase(getView().getContext().getApplicationContext());
+                //TaskDAO myTaskDAO = db.taskDAO();
+                //myTaskDAO.updateTask(task.getName(),task.getFrequency(),task.getDay(),task.getMonth(),task.getYear());
+                updateListView();
+
+
+
+
+
+
+
+            }        });
+
+        builder.show();
+
+
+
+
+    }
+
+    public void updateListView(){
+        RecyclerView overdueRecyclerView = binding.overdueRecycler;
+        final TaskListAdapter overdueAdapter = new TaskListAdapter(new TaskListAdapter.TaskDiff(), 1);
+        overdueRecyclerView.setAdapter(overdueAdapter);
+        overdueRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+        RecyclerView upcomingRecyclerView = binding.upcomingRecycler;
+        final TaskListAdapter upcomingAdapter = new TaskListAdapter(new TaskListAdapter.TaskDiff(), 1);
+        upcomingRecyclerView.setAdapter(upcomingAdapter);
+        upcomingRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        tvm = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
+        tvm.getAllTasks().observe(getViewLifecycleOwner(), tasks -> {
+            // Update the cached copy of the words in the adapter.
+            List<Task> upcoming = new ArrayList<Task>();
+            List<Task> overdue = new ArrayList<Task>();
+
+            List<Task> notify = dateChecker.whatToNotify(tasks);
+
+
+            for (Task task:tasks) {
+                if (task.getDateDue().before(Calendar.getInstance().getTime())) {
+                    overdue.add(task);
+                } else {
+                    upcoming.add(task);
+                }
+            }
+
+            //Creates a list of tasks that need a notification
+
+
+
+            overdueAdapter.submitList(overdue);
+            upcomingAdapter.submitList(upcoming);
+        });
+
     }
 
 }
