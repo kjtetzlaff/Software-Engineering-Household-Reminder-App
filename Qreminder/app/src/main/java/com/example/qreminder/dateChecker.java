@@ -1,6 +1,7 @@
 package com.example.qreminder;
 
 //import java.sql.Date;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -57,6 +58,7 @@ public class dateChecker extends Fragment {
         return notify;
     }
 
+    //Collects the current Date
     public static Date currentDate(){
         //Collects the current date
         cDay = cal.get(Calendar.DAY_OF_MONTH);
