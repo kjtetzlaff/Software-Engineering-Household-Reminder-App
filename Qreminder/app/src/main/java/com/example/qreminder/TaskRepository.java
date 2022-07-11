@@ -30,4 +30,10 @@ class TaskRepository {
             myTaskDAO.insert(task);
         });
     }
+
+    void update(Task task) {
+        TaskDatabase.databaseWriteExecutor.execute(() -> {
+            myTaskDAO.updateTask(task.getName(), task.getFrequency(), task.getDay(), task.getMonth(), task.getYear());
+        });
+    }
 }

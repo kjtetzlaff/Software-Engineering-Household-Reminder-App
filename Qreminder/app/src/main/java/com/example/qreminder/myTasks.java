@@ -135,6 +135,7 @@ public class myTasks extends Fragment {
                 //Action when task has been completed
 
                 task.update();
+                tvm.update(task);
 
                 //Attempt at updating the database
                 //TaskDatabase db = TaskDatabase.getDatabase(getView().getContext().getApplicationContext());
