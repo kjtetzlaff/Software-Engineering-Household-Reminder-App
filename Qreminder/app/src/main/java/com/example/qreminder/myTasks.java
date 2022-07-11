@@ -26,7 +26,7 @@ public class myTasks extends Fragment {
 
     private FragmentMytasksBinding binding;
     private TaskViewModel tvm;
-    private boolean con = false;
+    //private boolean con = false;
 
     @Override
     public View onCreateView(
