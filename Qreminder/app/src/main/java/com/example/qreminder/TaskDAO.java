@@ -11,9 +11,8 @@ import java.util.List;
 
 @Dao
 public interface TaskDAO {
-    // allowing the insert of the same word multiple times by passing a
-    // conflict resolution strategy
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Task word);
 
     @Query("UPDATE task_table SET frequency = :frequency, day = :day, month = :month, year = :year WHERE taskName = :name")
