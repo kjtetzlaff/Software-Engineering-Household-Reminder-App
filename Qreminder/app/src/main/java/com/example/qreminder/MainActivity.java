@@ -5,12 +5,18 @@ import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 
 
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -44,6 +50,9 @@ public class MainActivity extends AppCompatActivity{
     private ActivityMainBinding binding;
     private TaskViewModel tvm;
 
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,13 +70,32 @@ public class MainActivity extends AppCompatActivity{
 
         tvm = new ViewModelProvider(this).get(TaskViewModel.class);
 
+
         if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
             NotificationChannel channel = new NotificationChannel("My Notification", "My Notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+
         }
-       // if (java.time.LocalTime.now()) == java.time.LocalTime(12:00:00)) ;
-        //collectTasks();
+
+
+
+        BroadcastReceiver receiver=new BroadcastReceiver(){
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                collectTasks();
+            }
+
+        };
+
+        //Intent Filter is every minute for testing purposes
+        IntentFilter filter = new IntentFilter(Intent.ACTION_TIME_TICK);
+        registerReceiver(receiver,filter);
 
     }
+
+
+
 
 
 
@@ -115,19 +143,22 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-    public List<Task> collectTasks(){
+    public void collectTasks(){
+        //Currently only works when completed in myTasks frame, but it does work to notify.
         List<Task> allTasks = tvm.getAllTasks().getValue();
-        for (Task task: allTasks){
-            if (task.getDateDue().before(Calendar.getInstance().getTime())){
-                notification(task);
+        if (allTasks!=null) {
+            for (Task task : allTasks) {
+                if (task.getDateDue().before(Calendar.getInstance().getTime())) {
+                    notification(task);
+                }
+
             }
-
-        }
-
+         }
 
 
 
-        return allTasks;
+
+
     }
 
 
