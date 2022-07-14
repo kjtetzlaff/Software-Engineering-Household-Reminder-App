@@ -35,7 +35,9 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.DatePicker;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private TaskViewModel tvm;
+    private int id = 1;
+    private Boolean con = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +65,14 @@ public class MainActivity extends AppCompatActivity {
 
         tvm = new ViewModelProvider(this).get(TaskViewModel.class);
 
+        //Creates the channel for the notifications
         createNotificationChannel();
 
         BroadcastReceiver receiver=new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                addNotification();
+                if (!con) collectTasks();
+                con = false;
             }
         };
             IntentFilter filter = new IntentFilter(Intent.ACTION_TIME_TICK);
@@ -114,11 +120,7 @@ public class MainActivity extends AppCompatActivity {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            //CharSequence name = getString(R.string.channel_name);
-            //String description = getString(R.string.channel_description);
-            //int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel("My Notification", "My Notification", NotificationManager.IMPORTANCE_DEFAULT);
-            //channel.setDescription(description);
             // Register the channel with the system; you can't change the importance
             // or other notification behaviors after this
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
@@ -126,29 +128,43 @@ public class MainActivity extends AppCompatActivity {
         }
         // Create an explicit intent for an Activity in your app
         Intent intent = new Intent(this, MainActivity.class);
-        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        //PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
     }
 
 
     //notification code here
-private void addNotification() {
+private void addNotification(Task task) {
     NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "My Notification");
-            builder.setSmallIcon(R.drawable.ic_launcher_background);
-            //possibly change design
-            builder.setContentTitle("QReminder Notification");
-            builder.setContentText("Upcoming Task Reminder");
-            builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-    // Set the intent that will fire when the user taps the notification
-           // builder.setContentIntent(pendingIntent);
-            builder.setAutoCancel(true);
 
+    //possibly change design
+    builder.setSmallIcon(R.drawable.ic_launcher_background);
+    builder.setContentTitle("QReminder Notification");
+    //Changed to be a specific task
+    builder.setContentText("Your "+ task.getName()+" is overdue");
+    builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+    builder.setAutoCancel(true);
     NotificationManagerCompat notificationManager = NotificationManagerCompat.from(MainActivity.this);
-
-// notificationId is a unique int for each notification that you must define
-    notificationManager.notify(1, builder.build());
+    // notificationId is a unique int for each notification that you must define
+    notificationManager.notify(id, builder.build());
+    id++;
 }
+
+    public void collectTasks(){
+        //Currently only works when completed in myTasks frame, but it does work to notify.
+        List<Task> allTasks = tvm.getAllTasks().getValue();
+
+        if (allTasks!=null) {
+            for (Task task : allTasks) {
+                if (task.getDateDue().before(Calendar.getInstance().getTime())) {
+                    addNotification(task);
+                }
+
+            }
+        }
+        con = true;
+
+    }
+
 
 
 
