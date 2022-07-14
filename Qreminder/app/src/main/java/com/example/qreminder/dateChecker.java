@@ -57,6 +57,9 @@ public class dateChecker extends Fragment {
         return notify;
     }
 
+
+
+
     public static Date currentDate(){
         //Collects the current date
         cDay = cal.get(Calendar.DAY_OF_MONTH);
