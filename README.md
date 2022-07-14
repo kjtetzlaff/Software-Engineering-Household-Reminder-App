@@ -11,10 +11,15 @@ This android app has five main fragments:
 4. A screen allowing you to edit which tasks you would like reminders for
 5. A screen allowing you to add your own custom tasks for anything that isn't on your list.
 
-Release Notes, 6/23/2022:
-Right now, navigation between all screens is complete.
+Release Notes
+As of 6/23/2022:
+Navigation between all screens is complete.
+
+As of 7/14/2022:
+Created database to store reminders 
+Incorporated device notifications for tasks 
+Set reminders to be recurring after a set amount of time
 
 Next tasks include:
-- creating database to store reminders
-- incorporating device notifications for tasks
-- Setting reminders to be recurring after a set amount of time
+- Setup quiz to allow user to select what notification they want, and when the last time they changed it was
+- Work on unit testing
