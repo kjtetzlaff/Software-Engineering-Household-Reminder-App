@@ -113,6 +113,13 @@ public class Task {
         return (month + 1) + "/" + day + "/" + (year + 1900);
     }
 
+    public String lastCompleted() {
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date(year, month, day));
+        c.add(Calendar.DAY_OF_MONTH, -frequency);
+        return (c.getTime().getMonth() + 1) + "/" + c.getTime().getDate() + "/" + (c.getTime().getYear() + 1900);
+    }
+
     public String toString() {
         return (getDateDue().toString() + "\n" + getName());
     }

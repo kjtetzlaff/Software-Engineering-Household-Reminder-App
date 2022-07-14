@@ -61,13 +61,13 @@ public class myTasks extends Fragment {
         });
 
         RecyclerView overdueRecyclerView = binding.overdueRecycler;
-        final TaskListAdapter overdueAdapter = new TaskListAdapter(new TaskListAdapter.TaskDiff(), 1);
+        final TaskListAdapter overdueAdapter = new TaskListAdapter(new TaskListAdapter.TaskDiff(), 1, tvm);
         overdueRecyclerView.setAdapter(overdueAdapter);
         overdueRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
         RecyclerView upcomingRecyclerView = binding.upcomingRecycler;
-        final TaskListAdapter upcomingAdapter = new TaskListAdapter(new TaskListAdapter.TaskDiff(), 1);
+        final TaskListAdapter upcomingAdapter = new TaskListAdapter(new TaskListAdapter.TaskDiff(), 1, tvm);
         upcomingRecyclerView.setAdapter(upcomingAdapter);
         upcomingRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -160,13 +160,13 @@ public class myTasks extends Fragment {
 
     public void updateListView(){
         RecyclerView overdueRecyclerView = binding.overdueRecycler;
-        final TaskListAdapter overdueAdapter = new TaskListAdapter(new TaskListAdapter.TaskDiff(), 1);
+        final TaskListAdapter overdueAdapter = new TaskListAdapter(new TaskListAdapter.TaskDiff(), 1, tvm);
         overdueRecyclerView.setAdapter(overdueAdapter);
         overdueRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
         RecyclerView upcomingRecyclerView = binding.upcomingRecycler;
-        final TaskListAdapter upcomingAdapter = new TaskListAdapter(new TaskListAdapter.TaskDiff(), 1);
+        final TaskListAdapter upcomingAdapter = new TaskListAdapter(new TaskListAdapter.TaskDiff(), 1, tvm);
         upcomingRecyclerView.setAdapter(upcomingAdapter);
         upcomingRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         tvm = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);

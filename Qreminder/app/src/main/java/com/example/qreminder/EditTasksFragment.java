@@ -62,12 +62,13 @@ public class EditTasksFragment extends Fragment {
             }
         });
 
+        tvm = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
         RecyclerView editRecyclerView = binding.editRecyclerView;
-        final TaskListAdapter adapter = new TaskListAdapter(new TaskListAdapter.TaskDiff(), 2);
+        final TaskListAdapter adapter = new TaskListAdapter(new TaskListAdapter.TaskDiff(), 2, tvm);
         editRecyclerView.setAdapter(adapter);
         editRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        tvm = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
+
         tvm.getAllTasks().observe(getViewLifecycleOwner(), tasks -> {
             // Update the cached copy of the words in the adapter.
             adapter.submitList(tasks);

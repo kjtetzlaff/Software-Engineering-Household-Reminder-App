@@ -33,6 +33,7 @@ public class customTask extends Fragment {
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
     private TaskViewModel tvm;
+    private Task taskToUpdate;
 
     public customTask() {
         // Required empty public constructor
@@ -48,15 +49,34 @@ public class customTask extends Fragment {
                              Bundle savedInstanceState) {
 
         binding = FragmentCustomTaskBinding.inflate(inflater, container, false);
+        tvm = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
+
         return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+        String taskName = customTaskArgs.fromBundle(getArguments()).getTaskName();
+
+
+        taskToUpdate = tvm.getTask(taskName);
+        if (taskToUpdate == null) {
+            taskToUpdate = new Task("", new Date(), 1, 2);
+        }
+
+        binding.taskName.setText(taskName);
+
+        if (taskToUpdate.getFrequency() == 1) {
+            binding.reminderDropdown.setSelection(0);
+        } else {
+            binding.reminderDropdown.setSelection(getIndex(taskToUpdate.getFrequency()));
+        }
+
         initDatePicker();
         dateButton=view.findViewById(R.id.date_Select);
-        dateButton.setText(getToday());
-        tvm = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
+        dateButton.setText(taskToUpdate.lastCompleted());
 
         binding.createTaskDoneButton.setOnClickListener(new View.OnClickListener() {
 
@@ -75,12 +95,15 @@ public class customTask extends Fragment {
                     }
 
                 }
-                Task newTask = new Task(binding.taskName.getText().toString(),
-                        new Date((String)binding.dateSelect.getText()), numDays, 2
-                      );
 
-
+                String newName = binding.taskName.getText().toString();
+                Task newTask = new Task(newName, new Date((String)binding.dateSelect.getText()), numDays, 2);
+                if (taskToUpdate.getName() != newName) {
+                        tvm.delete(taskToUpdate.getName());
+                }
                 tvm.insert(newTask);
+
+
                 NavHostFragment.findNavController(customTask.this)
                         .navigate(R.id.action_customTask_to_addTask);
             }
@@ -108,6 +131,17 @@ public class customTask extends Fragment {
         String a = month+"/"+day+"/"+year;
         return a;
     }
+
+    private int getIndex(int frequency) {
+        for(int i = 0; i < binding.reminderDropdown.getCount(); i++) {
+            String text = binding.reminderDropdown.getItemAtPosition(i).toString();
+            if (text.contains("" + frequency)) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
     private void initDatePicker() {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -118,6 +152,7 @@ public class customTask extends Fragment {
 
             }
         };
+
 
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);

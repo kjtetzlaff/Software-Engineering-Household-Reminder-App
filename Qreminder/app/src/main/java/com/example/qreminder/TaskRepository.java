@@ -36,4 +36,19 @@ class TaskRepository {
             myTaskDAO.updateTask(task.getName(), task.getFrequency(), task.getDay(), task.getMonth(), task.getYear());
         });
     }
+
+    void delete(String task) {
+        TaskDatabase.databaseWriteExecutor.execute(() -> {
+            myTaskDAO.deleteTaskByName(task);
+        });
+    }
+
+    Task getTaskByName(String name) {
+        for (Task t:myTaskList.getValue()) {
+            if(t.getName() == name) {
+                return t;
+            }
+        }
+        return null;
+    }
 }

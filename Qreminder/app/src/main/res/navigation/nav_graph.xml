@@ -81,7 +81,11 @@
         android:id="@+id/CustomTask"
         android:name="com.example.qreminder.customTask"
         android:label="QReminder"
-        toolsLayout="@Layout/fragment_custom_task"/>
+        toolsLayout="@Layout/fragment_custom_task">
+        <argument
+            android:name="taskName"
+            app:argType="string" />
+    </fragment>
 
     <action
         android:id="@+id/action_customTask_to_addTask"
