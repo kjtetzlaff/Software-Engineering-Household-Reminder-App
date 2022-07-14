@@ -1,5 +1,7 @@
 package com.example.qreminder;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -89,6 +91,31 @@ public class EditTasksFragment extends Fragment {
             }
         });
 
+    }
+
+    public void buildPopUp(Task task) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getView().getContext());
+
+        builder.setCancelable(false);
+        builder.setTitle("!WARNING!");
+        builder.setMessage("Are you sure you would like to delete "+ task.getName()+"?");
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+
+            }
+        });
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //Action based on pressing delete
+                dialogInterface.cancel();
+
+            }
+
+        });
     }
 
     @Override
