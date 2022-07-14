@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //notification code here
+    //Add options to complete or ignore
 private void addNotification(Task task) {
     NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "My Notification");
 

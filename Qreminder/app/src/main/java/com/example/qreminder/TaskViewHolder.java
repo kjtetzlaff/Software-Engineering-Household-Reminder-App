@@ -1,5 +1,7 @@
 package com.example.qreminder;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +50,8 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    tvm.delete(t.getName());
+
+                    buildPopUp(t, view, tvm);
                 }
             });
         }
@@ -66,5 +69,33 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
                     .inflate(R.layout.edittasks_task_item, parent, false);
             return new TaskViewHolder(view, 2);
         }
+    }
+
+    public void buildPopUp(Task task, View view, TaskViewModel tvm) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+
+        builder.setCancelable(false);
+        builder.setTitle("!WARNING!");
+        builder.setMessage("Are you sure you would like to delete "+ task.getName()+"?");
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+
+            }
+        });
+
+        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //Action based on pressing delete
+                tvm.delete(task.getName());
+
+            }
+
+        });
+
+        builder.show();
+
     }
 }
