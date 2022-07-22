@@ -1,7 +1,5 @@
 package com.example.qreminder;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -12,11 +10,7 @@ import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.View;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -25,17 +19,12 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.qreminder.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.DatePicker;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -45,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private TaskViewModel tvm;
-    private int id = 1;
+    public static int id = 1;
+    public static Task currentTask = new Task();
     private Boolean con = false;
 
     @Override
@@ -79,8 +69,6 @@ public class MainActivity extends AppCompatActivity {
             registerReceiver(receiver,filter);
 
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -135,19 +123,52 @@ public class MainActivity extends AppCompatActivity {
     //notification code here
     //Add options to complete or ignore
 private void addNotification(Task task) {
-    NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "My Notification");
 
-    //possibly change design
-    builder.setSmallIcon(R.drawable.ic_launcher_background);
-    builder.setContentTitle("QReminder Notification");
-    //Changed to be a specific task
-    builder.setContentText("Your "+ task.getName()+" is overdue");
-    builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-    builder.setAutoCancel(true);
-    NotificationManagerCompat notificationManager = NotificationManagerCompat.from(MainActivity.this);
-    // notificationId is a unique int for each notification that you must define
-    notificationManager.notify(id, builder.build());
-    id++;
+        //Sets whatever the current task is
+        currentTask = task;
+
+        //Sets the main intent for the notification
+        Intent mainIntent = new Intent(this, MainActivity.class);
+        mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent mainPIntent = PendingIntent.getActivity(this, 0, mainIntent,PendingIntent.FLAG_IMMUTABLE);
+
+        //Sets the Complete action intent for the notification
+        Intent completeIntent = new Intent(this, CompleteActivity.class);
+        completeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent completePIntent = PendingIntent.getActivity(this, 0, completeIntent,PendingIntent.FLAG_IMMUTABLE);
+
+        //Sets the ignore intent for the notification
+        Intent ignoreIntent = new Intent(this, IgnoreActivity.class);
+        ignoreIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent ignorePIntent = PendingIntent.getActivity(this, 0, ignoreIntent,PendingIntent.FLAG_IMMUTABLE);
+
+        //Builds and creates the notification
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "My Notification");
+
+        //possibly change design
+        builder.setSmallIcon(R.drawable.ic_launcher_background);
+        builder.setContentTitle("QReminder Notification");
+        //Sets the text that the notification will display.
+        builder.setContentText("Your "+ currentTask.getName()+" is overdue");
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        //sets the notification to auto cancel when tapped
+        builder.setAutoCancel(true);
+
+        //Sets the intent
+        builder.setContentIntent(mainPIntent);
+
+        //Adds the action for complete
+        builder.addAction(R.drawable.ic_launcher_background, "Complete", completePIntent);
+
+        //Adds the action for ignore
+        builder.addAction(R.drawable.ic_launcher_background, "Ignore", ignorePIntent);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(MainActivity.this);
+
+        // notificationId is a unique int for each notification that you must define
+        notificationManager.notify(id, builder.build());
+        id++;
 }
 
     public void collectTasks(){
@@ -167,6 +188,10 @@ private void addNotification(Task task) {
     }
 
 
+
+    public void action(){
+        System.out.println("Hello WOrld");
+    }
 
 
 
