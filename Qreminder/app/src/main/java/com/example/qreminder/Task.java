@@ -29,7 +29,8 @@ public class Task {
     private int frequency;
 
     @ColumnInfo(name = "active")
-    private int active;
+    private int active; // 0 means not active, 1 means active, but no notifications, 2 means
+    // active with notifications.
 
     public Task(@NonNull String taskName, Date dateLastCompleted, int taskFrequency, int activeLevel){
         name = taskName;
