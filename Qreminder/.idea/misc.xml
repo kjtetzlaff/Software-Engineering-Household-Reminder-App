@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User-Games/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/drawable-anydpi/ic_action_name.xml" value="0.14" />
+        <entry key="..\:/Users/User-Games/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/drawable/ic_placeholder.xml" value="0.14" />
+        <entry key="..\:/Users/User-Games/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/drawable/ic_qreminder.xml" value="0.2985" />
+        <entry key="..\:/Users/User-Games/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/activity_main.xml" value="0.24954710144927536" />
+        <entry key="..\:/Users/User-Games/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/activity_splash.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/User-Games/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/content_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/User-Games/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/fragment_mytasks.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/User-Games/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/mytasks_task_item.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/User-Games/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/splash_screen.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/User-Games/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/splashscreen.xml" value="0.358695652173913" />
         <entry key="..\:/Users/User-School and Work/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/User-School and Work/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/content_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/User-School and Work/Documents/GitHub/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/layout/fragment_addtasks.xml" value="0.36666666666666664" />
