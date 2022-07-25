@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-        //add space (CI test)
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.toolbar);
