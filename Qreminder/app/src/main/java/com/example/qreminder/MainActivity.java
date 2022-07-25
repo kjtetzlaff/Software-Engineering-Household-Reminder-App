@@ -9,9 +9,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -21,9 +22,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.qreminder.databinding.ActivityMainBinding;
-
-import android.view.Menu;
-import android.view.MenuItem;
 
 import java.util.Calendar;
 import java.util.List;
@@ -45,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        //add space (CI test)
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.toolbar);
