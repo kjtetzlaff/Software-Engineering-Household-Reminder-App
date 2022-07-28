@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -15,6 +16,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
 
 public class TaskViewHolder extends RecyclerView.ViewHolder {
 
@@ -26,7 +29,7 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
         this.type = type;
     }
 
-    public void bind(Task t, TaskViewModel tvm) {
+    public void bind(Task t, TaskViewModel tvm, List<Task> checkedTasks, List<Task> uncheckedTasks) {
         CheckBox checkBox = itemView.findViewById(R.id.task_checkbox);
         checkBox.setText(t.getName());
 
@@ -56,7 +59,26 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
             });
         }
 
+        if (type == 3) {
+            if(t.getActive() >= 1) {
+                checkBox.setChecked(true);
+            } else {
+                checkBox.setChecked(false);
+            }
 
+            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked){
+                        checkedTasks.add(t);
+                        uncheckedTasks.remove(t);
+                    } else {
+                        uncheckedTasks.add(t);
+                        checkedTasks.remove(t);
+                    }
+                }
+            });
+        }
     }
 
     static TaskViewHolder create(ViewGroup parent, int type) {
@@ -64,11 +86,16 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.mytasks_task_item, parent, false);
             return new TaskViewHolder(view, 1);
-        } else {
+        } else if (type == 2) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.edittasks_task_item, parent, false);
             return new TaskViewHolder(view, 2);
+        } else if (type == 3) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.mytasks_task_item, parent, false);
+            return new TaskViewHolder(view, 3);
         }
+        return null;
     }
 
     public void buildPopUp(Task task, View view, TaskViewModel tvm) {

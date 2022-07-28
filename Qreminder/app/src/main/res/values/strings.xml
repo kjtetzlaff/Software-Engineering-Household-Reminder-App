@@ -20,6 +20,8 @@
         <item>Every 30 days</item>
         <item>Every 45 days</item>
         <item>Every 60 days</item>
+        <item>Every 90 days</item>
+        <item>Every 180 days</item>
         <item>Every 365 days</item>
     </string-array>
 

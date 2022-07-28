@@ -8,19 +8,25 @@ import java.util.List;
 
 class TaskRepository {
     private TaskDAO myTaskDAO;
-    private LiveData<List<Task>> myTaskList;
+    private LiveData<List<Task>> activeTaskList;
+    private LiveData<List<Task>> inactiveTaskList;
 
 
     TaskRepository(Application application) {
         TaskDatabase db = TaskDatabase.getDatabase(application);
         myTaskDAO = db.taskDAO();
-        myTaskList = myTaskDAO.getTaskListByDate();
+        activeTaskList = myTaskDAO.getTaskListByDate();
+        inactiveTaskList = myTaskDAO.getAllTasks();
+    }
+
+    LiveData<List<Task>> getInactiveTasks() {
+        return inactiveTaskList;
     }
 
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.
     LiveData<List<Task>> getAllTasks() {
-        return myTaskList;
+        return activeTaskList;
     }
 
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures
@@ -33,7 +39,7 @@ class TaskRepository {
 
     void update(Task task) {
         TaskDatabase.databaseWriteExecutor.execute(() -> {
-            myTaskDAO.updateTask(task.getName(), task.getFrequency(), task.getDay(), task.getMonth(), task.getYear());
+            myTaskDAO.updateTask(task.getName(), task.getFrequency(), task.getDay(), task.getMonth(), task.getYear(), task.getActive());
         });
     }
 
@@ -44,11 +50,12 @@ class TaskRepository {
     }
 
     Task getTaskByName(String name) {
-        for (Task t:myTaskList.getValue()) {
+        for (Task t:activeTaskList.getValue()) {
             if(t.getName() == name) {
                 return t;
             }
         }
         return null;
     }
+
 }

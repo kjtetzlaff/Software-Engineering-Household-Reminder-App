@@ -15,8 +15,8 @@ public interface TaskDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Task word);
 
-    @Query("UPDATE task_table SET frequency = :frequency, day = :day, month = :month, year = :year WHERE taskName = :name")
-    void updateTask(String name, int frequency, int day, int month, int year);
+    @Query("UPDATE task_table SET frequency = :frequency, day = :day, month = :month, year = :year, active = :active WHERE taskName = :name")
+    void updateTask(String name, int frequency, int day, int month, int year, int active);
 
     @Query("DELETE FROM task_table WHERE taskName =  :name")
     void deleteTaskByName(String name);
@@ -29,5 +29,9 @@ public interface TaskDAO {
 
     @Query("SELECT * FROM task_table WHERE active >= 1 ORDER BY year, month, day")
     LiveData<List<Task>> getTaskListByDate();
+
+    @Query("SELECT * FROM task_table ORDER BY taskName")
+    LiveData<List<Task>> getAllTasks();
+
 
 }
