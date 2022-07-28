@@ -52,9 +52,7 @@ public class addtasks extends Fragment {
             taskList = tasks;
         });
 
-        if (taskList == null){
-            tvm.initializeDatabase();
-        }
+
 
         RecyclerView addRecyclerView = binding.addRecyclerView;
         adapter = new TaskListAdapter(new TaskListAdapter.TaskDiff(), 3, tvm);
@@ -62,7 +60,19 @@ public class addtasks extends Fragment {
         addRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         tvm.getInactiveTasks().observe(getViewLifecycleOwner(), tasks -> {
             // Update the cached copy of the words in the adapter.
-            adapter.submitList(tasks);
+            String search = binding.searchText.getText().toString();
+            adapter.submitList(TaskViewModel.searchTasks(tasks, search));
+            if (tasks != null && tasks.size() <= 0){
+                tvm.initializeDatabase();
+            }
+        });
+
+        binding.Search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String search = binding.searchText.getText().toString();
+                adapter.submitList(TaskViewModel.searchTasks(tvm.getInactiveTasks().getValue(), search));
+            }
         });
 
 

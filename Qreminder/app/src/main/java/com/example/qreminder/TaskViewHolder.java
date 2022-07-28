@@ -66,10 +66,10 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
                 checkBox.setChecked(false);
             }
 
-            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked){
+                public void onClick(View v) {
+                    if (checkBox.isChecked()){
                         checkedTasks.add(t);
                         uncheckedTasks.remove(t);
                     } else {
@@ -78,6 +78,18 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
                     }
                 }
             });
+//            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                @Override
+//                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                    if (isChecked){
+//                        checkedTasks.add(t);
+//                        uncheckedTasks.remove(t);
+//                    } else {
+//                        uncheckedTasks.add(t);
+//                        checkedTasks.remove(t);
+//                    }
+//                }
+//            });
         }
     }
 
