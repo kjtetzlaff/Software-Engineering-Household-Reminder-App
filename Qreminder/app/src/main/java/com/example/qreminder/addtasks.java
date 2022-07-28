@@ -62,9 +62,6 @@ public class addtasks extends Fragment {
             // Update the cached copy of the words in the adapter.
             String search = binding.searchText.getText().toString();
             adapter.submitList(TaskViewModel.searchTasks(tasks, search));
-            if (tasks != null && tasks.size() <= 0){
-                tvm.initializeDatabase();
-            }
         });
 
         binding.Search.setOnClickListener(new View.OnClickListener() {
