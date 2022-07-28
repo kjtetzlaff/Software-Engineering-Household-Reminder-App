@@ -37,6 +37,8 @@
             app:destination="@id/EditTasks" />
 
     </fragment>
+
+
     <fragment
         android:id="@+id/AddTasks"
         android:name="com.example.qreminder.addtasks"
