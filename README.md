@@ -14,6 +14,7 @@ This android app has five main fragments:
 Release Notes
 
 As of 7/28/2022:
+Added option to mark task completed, or ignore from the notification
 When the app is first run, goes to screen to allow you to add common tasks
 Added functionality to add tasks screen, so that tasks are added to the database when the checkboxes are checked
 Added CI to the app for testing
