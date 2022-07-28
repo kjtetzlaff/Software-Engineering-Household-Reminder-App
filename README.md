@@ -12,14 +12,21 @@ This android app has five main fragments:
 5. A screen allowing you to add your own custom tasks for anything that isn't on your list.
 
 Release Notes
-As of 6/23/2022:
-Navigation between all screens is complete.
+
+As of 7/28/2022:
+When the app is first run, goes to screen to allow you to add common tasks
+Added functionality to add tasks screen, so that tasks are added to the database when the checkboxes are checked
+Added CI to the app for testing
 
 As of 7/14/2022:
 Created database to store reminders 
 Incorporated device notifications for tasks 
 Set reminders to be recurring after a set amount of time
 
+As of 6/23/2022:
+Navigation between all screens is complete.
+
+
 Next tasks include:
-- Setup quiz to allow user to select what notification they want, and when the last time they changed it was
-- Work on unit testing
+- Adding option to turn notifications on and off for different tasks
+- Testing app
