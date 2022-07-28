@@ -23,6 +23,13 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.qreminder.databinding.ActivityMainBinding;
 
+<<<<<<< Updated upstream
+=======
+import android.view.Menu;
+import android.view.MenuItem;
+
+import java.util.ArrayList;
+>>>>>>> Stashed changes
 import java.util.Calendar;
 import java.util.List;
 
@@ -33,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private TaskViewModel tvm;
     public static int id = 1;
-    public static Task currentTask = new Task();
-    private Boolean con = false;
+    private static Boolean con = false;
+    public static List notificationList = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Creates the channel for the notifications
         createNotificationChannel();
+
 
         BroadcastReceiver receiver=new BroadcastReceiver() {
             @Override
@@ -119,11 +127,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     //notification code here
-    //Add options to complete or ignore
 private void addNotification(Task task) {
 
-        //Sets whatever the current task is
-        currentTask = task;
 
         //Sets the main intent for the notification
         Intent mainIntent = new Intent(this, MainActivity.class);
@@ -131,14 +136,16 @@ private void addNotification(Task task) {
         PendingIntent mainPIntent = PendingIntent.getActivity(this, 0, mainIntent,PendingIntent.FLAG_IMMUTABLE);
 
         //Sets the Complete action intent for the notification
-        Intent completeIntent = new Intent(this, CompleteActivity.class);
+        Intent completeIntent = new Intent(this, MainActivity2.class);
         completeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        completeIntent.putExtra("Complete",id);
         PendingIntent completePIntent = PendingIntent.getActivity(this, 0, completeIntent,PendingIntent.FLAG_IMMUTABLE);
 
         //Sets the ignore intent for the notification
-        Intent ignoreIntent = new Intent(this, IgnoreActivity.class);
+        Intent ignoreIntent = new Intent(this, MainActivity2.class);
         ignoreIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent ignorePIntent = PendingIntent.getActivity(this, 0, ignoreIntent,PendingIntent.FLAG_IMMUTABLE);
+        ignoreIntent.putExtra("Ignore", id);
+        PendingIntent ignorePIntent = PendingIntent.getActivity(this, 1, ignoreIntent,PendingIntent.FLAG_IMMUTABLE);
 
         //Builds and creates the notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "My Notification");
@@ -147,7 +154,7 @@ private void addNotification(Task task) {
         builder.setSmallIcon(R.drawable.ic_launcher_background);
         builder.setContentTitle("QReminder Notification");
         //Sets the text that the notification will display.
-        builder.setContentText("Your "+ currentTask.getName()+" is overdue");
+        builder.setContentText("Your "+ task.getName()+" is overdue");
         builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         //sets the notification to auto cancel when tapped
@@ -166,12 +173,17 @@ private void addNotification(Task task) {
 
         // notificationId is a unique int for each notification that you must define
         notificationManager.notify(id, builder.build());
+
+        //Adds items to a list
+        notificationList.add(task);
+        notificationList.add(id);
         id++;
 }
 
     public void collectTasks(){
         //Currently only works when completed in myTasks frame, but it does work to notify.
         List<Task> allTasks = tvm.getAllTasks().getValue();
+        notificationList = new ArrayList();
 
         if (allTasks!=null) {
             for (Task task : allTasks) {
@@ -187,9 +199,7 @@ private void addNotification(Task task) {
 
 
 
-    public void action(){
-        System.out.println("Hello WOrld");
-    }
+
 
 
 
