@@ -23,13 +23,10 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.qreminder.databinding.ActivityMainBinding;
 
-<<<<<<< Updated upstream
-=======
 import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
->>>>>>> Stashed changes
 import java.util.Calendar;
 import java.util.List;
 
