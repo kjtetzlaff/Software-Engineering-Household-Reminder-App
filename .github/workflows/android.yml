@@ -30,4 +30,4 @@ jobs:
       run: ./Qreminder/gradlew build
       
     - name: Run Tests
-      run: ./gradlew test
+      run: ./Qreminder/gradlew test
