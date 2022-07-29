@@ -28,6 +28,3 @@ jobs:
 
     - name: Build with Gradle
       run: ./Qreminder/gradlew build
-
-    - name: Build Project
-      run: ./Qreminder/gradlew assemble
