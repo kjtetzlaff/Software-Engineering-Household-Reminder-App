@@ -28,3 +28,6 @@ jobs:
 
     - name: Build with Gradle
       run: ./Qreminder/gradlew build
+      
+    - name: Run Tests
+      run: ./gradlew test
