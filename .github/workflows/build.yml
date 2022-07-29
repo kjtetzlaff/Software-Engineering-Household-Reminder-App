@@ -1,5 +1,5 @@
 //followed https://www.youtube.com/watch?v=K9w01h4-Wnc to create CI
-name: Android Build
+name: Android_Build
 
 on: pull_request
 
