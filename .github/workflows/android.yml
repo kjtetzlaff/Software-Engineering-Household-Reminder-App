@@ -24,10 +24,10 @@ jobs:
       run: chmod +x Qreminder/gradlew
 
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./Qreminder/gradlew build
 
     - name: Run Tests
-      run: ./gradlew test
+      run: ./Qreminder/gradlew test
 
     - name: Build Project
-      run: ./gradlew assemble
+      run: ./Qreminder/gradlew assemble
