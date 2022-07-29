@@ -29,8 +29,5 @@ jobs:
     - name: Build with Gradle
       run: ./Qreminder/gradlew build
 
-    - name: Run Tests
-      run: ./Qreminder/gradlew test
-
     - name: Build Project
       run: ./Qreminder/gradlew assemble
