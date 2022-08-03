@@ -103,7 +103,6 @@ public class ExampleInstrumentedTest {
     }
 
     @Test
-<<<<<<< Updated upstream
     public void changeScreen(){
         onView(withId(R.id.startButton)).perform(click());
         onView(withText("Overdue Tasks:")).check(matches(isDisplayed()));
@@ -113,24 +112,10 @@ public class ExampleInstrumentedTest {
         onView(withText("Add Your Tasks +")).check(matches(isDisplayed()));
         onView(withId(R.id.add_custom_task)).perform(click());
         onView(withText("Customize Task")).check(matches(isDisplayed()));
-
-
-
-=======
-        public void changeScreen(){
-            onView(withId(R.id.startButton)).perform(click());
-            onView(withText("My Tasks")).check(matches(isDisplayed()));
-            Espresso.onView(ViewMatchers.withText("Edit Tasks")).perform(ViewActions.click());
-            onView(withText("Edit Tasks")).check(matches(isDisplayed()));
-            onView(withId(R.id.floatingActionButton)).perform(click());
-            onView(withText("Add Your Tasks +")).check(matches(isDisplayed()));
-            onView(withId(R.id.add_custom_task)).perform(click());
-            onView(withText("Custom Task")).check(matches(isDisplayed()));
-            onView(withId(R.id.createTaskDoneButton)).perform(click());
-            onView(withText("Add Your Tasks +")).check(matches(isDisplayed()));
-            onView(withId(R.id.add_tasks_done)).perform(click());
-            onView(withText("My Tasks")).check(matches(isDisplayed()));
->>>>>>> Stashed changes
+        onView(withId(R.id.createTaskDoneButton)).perform(click());
+        onView(withText("Add Your Tasks +")).check(matches(isDisplayed()));
+        onView(withId(R.id.add_tasks_done)).perform(click());
+        onView(withText("Overdue Tasks:")).check(matches(isDisplayed()));
     }
 
 }
