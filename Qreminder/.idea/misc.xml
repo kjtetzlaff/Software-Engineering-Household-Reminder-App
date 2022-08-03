@@ -34,8 +34,11 @@
         <entry key="..\:/Users/kjtet/Desktop/SoftwareEngineering/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/menu/menu_main.xml" value="0.25" />
         <entry key="..\:/Users/kjtet/Desktop/SoftwareEngineering/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Users/kjtet/Desktop/SoftwareEngineering/Software-Engineering-Household-Reminder-App/Qreminder/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1235" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1235" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.24427083333333333" />
+        <entry key="app/src/main/res/layout/addtasks_task_item.xml" value="0.15715579710144928" />
         <entry key="app/src/main/res/layout/constraint_layout.xml" value="0.29698092695595557" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/edittasks_task_item.xml" value="0.10677083333333333" />
