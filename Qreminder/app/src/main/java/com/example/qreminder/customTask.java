@@ -104,10 +104,12 @@ public class customTask extends Fragment {
                 tvm.insert(newTask);
 
 
+
                 NavHostFragment.findNavController(customTask.this)
                         .navigate(R.id.action_customTask_to_addTask);
             }
         });
+
         binding.createTaskCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,6 +117,7 @@ public class customTask extends Fragment {
                         .navigate(R.id.action_customTask_to_addTask);
             }
         });
+
         binding.dateSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

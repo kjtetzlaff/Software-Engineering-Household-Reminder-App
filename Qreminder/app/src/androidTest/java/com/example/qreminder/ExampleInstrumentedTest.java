@@ -71,6 +71,8 @@ public class ExampleInstrumentedTest {
 
     }
 
+
+    //Creates x amount of custom tasks and adds them to the database.
     public int customTask(int x){
         int i = 0;
         List<String> choices = new ArrayList<String>();
