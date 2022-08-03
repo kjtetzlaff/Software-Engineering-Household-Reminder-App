@@ -105,13 +105,13 @@ public class ExampleInstrumentedTest {
     @Test
     public void changeScreen(){
         onView(withId(R.id.startButton)).perform(click());
-        onView(withText("My Tasks")).check(matches(isDisplayed()));
+        onView(withText("Overdue Tasks:")).check(matches(isDisplayed()));
         Espresso.onView(ViewMatchers.withText("Edit Tasks")).perform(ViewActions.click());
-        onView(withText("Edit Tasks")).check(matches(isDisplayed()));
+        onView(withText("Tasks")).check(matches(isDisplayed()));
         onView(withId(R.id.floatingActionButton)).perform(click());
         onView(withText("Add Your Tasks +")).check(matches(isDisplayed()));
         onView(withId(R.id.add_custom_task)).perform(click());
-        onView(withText("Custom Task")).check(matches(isDisplayed()));
+        onView(withText("Customize Task")).check(matches(isDisplayed()));
 
 
 
