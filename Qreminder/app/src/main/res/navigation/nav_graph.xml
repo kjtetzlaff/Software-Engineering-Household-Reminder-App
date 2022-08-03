@@ -10,7 +10,7 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.qreminder.FirstFragment"
-        android:label="QReminder"
+        android:label="Start"
         tools:layout="@layout/fragment_first">
 
         <action
@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/myTasks"
         android:name="com.example.qreminder.myTasks"
-        android:label="QReminder"
+        android:label="My Tasks"
         tools:layout="@layout/fragment_mytasks">
 
         <action
@@ -62,7 +62,7 @@
     <fragment
         android:id="@+id/EditTasks"
         android:name="com.example.qreminder.EditTasksFragment"
-        android:label="QReminder"
+        android:label="Edit Tasks"
         toolsLlayout="@layout/fragment_edittasks">
 
         <action
@@ -82,7 +82,7 @@
     <fragment
         android:id="@+id/CustomTask"
         android:name="com.example.qreminder.customTask"
-        android:label="QReminder"
+        android:label="Customize Task"
         toolsLayout="@Layout/fragment_custom_task">
         <argument
             android:name="taskName"
