@@ -31,15 +31,15 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(binding.getRoot());
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         tvm = new ViewModelProvider(this).get(TaskViewModel.class);
-        int id = MainActivity.id;
+        int id = 0;
 
         if (getIntent().hasExtra("Complete")){
             //Figure out how to grab the specific id of the notification
-            //id = getIntent().getIntExtra("Complete", 0);
+            id = getIntent().getIntExtra("Complete", 0);
             int testIndex = 0;
             int updateIndex = 0;
             while (testIndex<MainActivity.notificationList.size()){
-                if (MainActivity.notificationList.get(testIndex).equals(MainActivity.id)){
+                if (MainActivity.notificationList.get(testIndex).equals(id)){
                     updateIndex = testIndex-1;
                     break;
                 }
@@ -54,11 +54,14 @@ public class MainActivity2 extends AppCompatActivity {
         }
 
         else if (getIntent().hasExtra("Ignore")) {
-            //Cancels the notification
-            //Figure out how to grab the specific id of the notification
+           id = getIntent().getIntExtra("Ignore", 0);
 
         }
-        manager.cancel(id-1);
+
+            manager.cancel(id);
+
+
     }
+
 
     }

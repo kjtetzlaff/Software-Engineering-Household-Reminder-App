@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private TaskViewModel tvm;
     public static int id = 1;
+    public static int cRequest = 0;
+    public static int iRequest = 2000000000;
     private static Boolean con = false;
     public static List notificationList = new ArrayList();
 
@@ -136,13 +138,13 @@ private void addNotification(Task task) {
         Intent completeIntent = new Intent(this, MainActivity2.class);
         completeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         completeIntent.putExtra("Complete",id);
-        PendingIntent completePIntent = PendingIntent.getActivity(this, 0, completeIntent,PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent completePIntent = PendingIntent.getActivity(this, cRequest, completeIntent,PendingIntent.FLAG_IMMUTABLE|PendingIntent.FLAG_UPDATE_CURRENT);
 
         //Sets the ignore intent for the notification
         Intent ignoreIntent = new Intent(this, MainActivity2.class);
         ignoreIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         ignoreIntent.putExtra("Ignore", id);
-        PendingIntent ignorePIntent = PendingIntent.getActivity(this, 1, ignoreIntent,PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent ignorePIntent = PendingIntent.getActivity(this, iRequest, ignoreIntent,PendingIntent.FLAG_IMMUTABLE|PendingIntent.FLAG_UPDATE_CURRENT);
 
         //Builds and creates the notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "My Notification");
@@ -175,6 +177,9 @@ private void addNotification(Task task) {
         notificationList.add(task);
         notificationList.add(id);
         id++;
+        cRequest++;
+        iRequest--;
+
 }
 
     public void collectTasks(){
