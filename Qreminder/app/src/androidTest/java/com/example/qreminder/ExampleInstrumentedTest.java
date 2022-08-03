@@ -1,32 +1,30 @@
 package com.example.qreminder;
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.*;
-import static androidx.test.espresso.matcher.ViewMatchers.*;
-import static androidx.test.espresso.assertion.ViewAssertions.*;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.typeText;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.junit.Assert.assertEquals;
+
+//import static java.util.regex.Pattern.matches;
 
 import android.content.Context;
-import android.widget.Button;
 
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.test.espresso.Espresso;
-import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.matcher.RootMatchers;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import static org.junit.Assert.*;
-
-import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,6 +98,21 @@ public class ExampleInstrumentedTest {
             i++;
         }
     return x;
+    }
+
+    @Test
+    public void changeScreen(){
+        onView(withId(R.id.startButton)).perform(click());
+        onView(withText("My Tasks")).check(matches(isDisplayed()));
+        Espresso.onView(ViewMatchers.withText("Edit Tasks")).perform(ViewActions.click());
+        onView(withText("Edit Tasks")).check(matches(isDisplayed()));
+        onView(withId(R.id.floatingActionButton)).perform(click());
+        onView(withText("Add Your Tasks +")).check(matches(isDisplayed()));
+        onView(withId(R.id.add_custom_task)).perform(click());
+        onView(withText("Custom Task")).check(matches(isDisplayed()));
+
+
+
     }
 
 }
