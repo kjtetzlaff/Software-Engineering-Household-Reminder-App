@@ -7,7 +7,11 @@ import static androidx.test.espresso.assertion.ViewAssertions.*;
 
 import android.content.Context;
 
+import androidx.test.espresso.Espresso;
 import androidx.test.espresso.ViewAction;
+import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.matcher.RootMatchers;
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -18,6 +22,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -36,12 +43,8 @@ public class ExampleInstrumentedTest {
     @Test
     public void startClick() {
         onView(withId(R.id.startButton)).perform(click());
-<<<<<<< Updated upstream
-        onView(withText("Add Task")).check(matches(isDisplayed()));
 
-    }
-=======
-        //onView(withText("Add Task")).check(matches(isDisplayed()));
+        onView(withText("Add Task")).check(matches(isDisplayed()));
 
     }
 
@@ -112,5 +115,5 @@ public class ExampleInstrumentedTest {
         onView(withText("Overdue Tasks:")).check(matches(isDisplayed()));
     }
 
->>>>>>> Stashed changes
+
 }
