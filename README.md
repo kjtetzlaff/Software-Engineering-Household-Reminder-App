@@ -13,6 +13,10 @@ This android app has five main fragments:
 
 Release Notes
 
+As of 8/4/2022:
+Added unit testing and instrumented testing, and ensured all tests passed.
+Changed app icon to have Qreminder logo.
+
 As of 7/28/2022:
 Added option to mark task completed, or ignore from the notification.
 When the app is first run, goes to screen to allow you to add common tasks.
@@ -28,6 +32,5 @@ As of 6/23/2022:
 Navigation between all screens is complete.
 
 
-Next tasks include:
+Areas for future improvement could include:
 - Adding option to turn notifications on and off for different tasks.
-- Testing app.
